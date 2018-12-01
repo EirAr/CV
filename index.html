@@ -403,18 +403,16 @@
 
 
             $.ajax({
-                url : "mail.php",
                 type: "POST",
+                url : "mail.php",
+                dataType: "json",
                 data : formData,
-                success: function(data, textStatus, jqXHR)
-                {
-
+                success: function(data, textStatus, jqXHR) {
                     $('#status').text(data.message);
                     if (data.code) //If mail was sent successfully, reset the form.
                         $('#contact-form').closest('form').find("input[type=text], textarea").val("");
                 },
-                error: function (jqXHR, textStatus, errorThrown)
-                {
+                error: function (jqXHR, textStatus, errorThrown) {
                     $('#status').text(jqXHR);
                 }
             });
